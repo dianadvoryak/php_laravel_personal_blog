@@ -11,14 +11,16 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, Post $post)
     {
-//        dd($request);
         $data = $request->validated();
-//        dd($data);
-//        if(isset($request['image'])){
+//        dd($post['image']);
+        if (isset($request['image'])) {
+            if (isset($post['image'])) {
+                Storage::disk('public')->delete($post['image']);
+            }
             $data['image'] = Storage::disk('public')->put('/images', $data['image']);
-//        } else {
-//            $data['image'] = $post['image'];
-//        }
+        } else {
+            $data['image'] = $post['image'];
+        }
         $post->update($data);
         return redirect()->route('admin.post.index');
     }
