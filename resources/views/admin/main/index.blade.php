@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-body-emphasis">
+                    <a href="{{ route('admin.post.index') }}" class="nav-link link-body-emphasis">
                         Posts
                     </a>
                 </li>

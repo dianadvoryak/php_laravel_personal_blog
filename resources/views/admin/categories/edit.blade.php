@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3 class="display-6 fw-bold text-body-emphasis">editing category</h3>
+        <h3 class="display-6 fw-bold text-body-emphasis">Editing category</h3>
 
         <a href="{{ route('admin.category.index') }}" class="icon-link mb-2">
             back to category

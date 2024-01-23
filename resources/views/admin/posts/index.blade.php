@@ -5,6 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8 ">
                 <h1 class="display-5 fw-bold text-body-emphasis">Posts</h1>
+                <a href="{{ route('admin.main.index') }}" class="icon-link mb-2">
+                    back to menu
+                </a>
+                <a href="{{ route('admin.post.create') }}"
+                   class="nav-link active btn btn-primary rounded-pill w-25 p-2 mb-2" aria-current="page">Add</a>
+
                 @foreach($posts as $post)
                     <div class="feature col bg-body-tertiary rounded-3 border p-5 mb-2">
                         <h3 class="fs-2 text-body-emphasis">{{ $post->id }}. {{ $post->title }}</h3>
@@ -19,9 +25,22 @@
                         </p>
                         <div class="w-50 mb-2">
                             @if(isset($post->image))
-                                <img src="{{ url('storage/' . $post->image) }}" alt="image" class="w-50">
+                            <img src="{{ url('storage/' . $post->image) }}" alt="image" class="w-50">
                             @endif
                         </div>
+                        <a href="{{ route('admin.post.show', $post->id) }}" class="icon-link">
+                            Show
+                        </a>
+                        <a href="{{ route('admin.post.edit', $post->id) }}" class="icon-link">
+                            Edit
+                        </a>
+                        <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="border-0 bg-transparent p-0" type="submit">
+                                <a class="icon-link">Remove</a>
+                            </button>
+                        </form>
                     </div>
                 @endforeach
             </div>
