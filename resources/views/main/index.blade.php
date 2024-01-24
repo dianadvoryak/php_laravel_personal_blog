@@ -24,6 +24,17 @@
                         </div>
                     </div>
                 @endforeach
+                <form method="GET" id="formCount">
+                    <p>Show:</p>
+                    <select name="count" id="countPaginate">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                    </select>
+                    <button type="submit" id="countGo">go</button>
+                </form>
+                <div class="mt-2">
+                    {{ $posts->withQueryString()->links() }}
+                </div>
             </div>
         </div>
     </div>

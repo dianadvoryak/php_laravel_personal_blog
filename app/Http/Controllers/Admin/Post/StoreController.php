@@ -13,7 +13,7 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         if(isset($data['image'])){
-            $data['image'] = Storage::put('/images/', $data['image']);
+            $data['image'] = Storage::put('/images', $data['image']);
         }
         Post::firstOrCreate($data);
         return redirect()->route('admin.post.index');
