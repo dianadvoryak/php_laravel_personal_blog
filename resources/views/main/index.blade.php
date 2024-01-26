@@ -19,19 +19,26 @@
                         </p>
                         <div class="w-50 mb-2">
                             @if(isset($post->image))
-                                <img src="{{ url('storage/' . $post->image) }}" alt="image" class="w-50">
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="image" class="w-50">
                             @endif
                         </div>
                     </div>
                 @endforeach
-                <form method="GET" id="formCount">
-                    <p>Show:</p>
-                    <select name="count" id="countPaginate">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                    </select>
-                    <button type="submit" id="countGo">go</button>
-                </form>
+                <p>Show:</p>
+                <div class="input-group flex-row">
+                    <form method="GET" id="formCount">
+                        <button class="btn btn-primary" type="submit" value="1"
+                                name="count">
+                            <span>1</span>
+                        </button>
+                    </form>
+                    <form method="GET" id="formCount">
+                        <button class="btn btn-primary" type="submit" value="2"
+                                name="count">
+                            <span>2</span>
+                        </button>
+                    </form>
+                </div>
                 <div class="mt-2">
                     {{ $posts->withQueryString()->links() }}
                 </div>
